@@ -1,0 +1,24 @@
+<p>
+    <mat-toolbar color="primary">
+      
+      
+      <span>My App</span>
+
+      <span class="example-spacer"></span>
+      <h2 *ngIf="islogin;">Hello, {{customer['username']}}</h2>
+      <!-- <ng-template #elseBlock1><h2>Hello, World</h2></ng-template>  -->
+      <span class="example-spacer"></span>
+      <div *ngIf="islogin; else elseBlock">
+      <mat-nav-list class='menu'>
+        <mat-list-item routerLink="/customer/dashboard">Products</mat-list-item>
+        <mat-list-item routerLink="/customer/cart"><img style="width:30px;height:30px;"src='../../assets/cart.png'><span class='counter'>{{count}}</span></mat-list-item>
+        <mat-list-item routerLink="/customer/login" (click)="logout()">Logout</mat-list-item>
+      </mat-nav-list></div>
+      <ng-template #elseBlock>
+        <mat-nav-list class='menu'>
+            <mat-list-item routerLink="/customer/login">SignIn</mat-list-item>
+            <mat-list-item routerLink="/customer/signup">SignUp</mat-list-item>
+          </mat-nav-list>
+      </ng-template>
+    </mat-toolbar>
+  </p>

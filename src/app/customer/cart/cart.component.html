@@ -1,0 +1,30 @@
+<table class="table" boarder="1px">
+    <thead>
+      <tr >
+        <th>Action</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div *ngIf="cartitems.length==0">
+        Product Not Added In Cart So Please Click Here<button mat-raised-button  color="accent" (click)="goto()">Shop</button>
+      </div>
+     <tr *ngFor="let Item of cartitems">
+       <td><button class="btn btn-danger" id={{Item.id}} (click)="removeproduct($event)">X</button></td>
+       <td>{{Item.name}}</td>
+       <td>{{Item.price}}</td>
+       <!-- <td>{{Item.stock}}</td> -->
+       
+       <td><button class='btn btn-primary' [disabled]="Item.stock === 0" (click)="plushQuantity($event)" value="inc" id={{Item.p_id}}>+</button > {{Item.quantity}} <button class='btn btn-danger'(click)="plushQuantity($event)" value="dec" id={{Item.p_id}}>-</button></td>
+       <td>{{Item.price*Item.quantity}}</td>
+     </tr></tbody>
+     <tfoot>
+      <td [attr.colspan]="4">Total pay</td><td [attr.colspan]="2" style='color:rgb(56, 206, 106)'>{{Totalpay}}<span> Rs </span></td>
+     </tfoot>
+  </table>
+  <!-- <div class="col-md-4">
+    <button (click)="pay(Totalpay)" class="btn btn-success btn-block">Pay ${{Totalpay}}</button>
+  </div> -->

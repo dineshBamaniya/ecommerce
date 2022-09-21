@@ -1,0 +1,20 @@
+<h2 class="text-center">All Products</h2>
+
+<mat-grid-list cols="4" rowHeight="1:2">
+  <mat-grid-tile *ngFor="let product of products">
+
+    <div class="card">
+      <img class="card-img-top" src="http://localhost:3020/Productimages/{{product.image}}" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-title">{{product.name}}
+        <p>
+        <p class="card-text">${{product.price}}</p>
+        <button *ngIf="product.select != true && product.quantity!=0; else disbtn " class='btn btn-primary' id={{product.p_id}}
+          (click)="addtocart($event)">AddtoCart</button>
+          <button *ngIf="product.select == true && product.quantity!=0; else disbtn " class='btn btn-primary' id={{product.p_id}}
+          (click)="goToCart()">Go To Cart</button>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>
